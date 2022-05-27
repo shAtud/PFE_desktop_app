@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="style.css">
+
+<body>
+
+<div id="resultDiv"></div>
+
+  <script>
+
+var mysql      = require('mysql');
+
+var connection = mysql.createConnection({
+
+  host     : 'localhost',
+
+  user     : 'root',
+
+  password : null,
+
+  database : 'electron_first'
+
+});
+
+ 
+
+connection.connect();
+
+
+$sql = "SELECT 'id','uname' FROM  'login'";
+
+ 
+
+connection.query($sql, function (error, results, fields) {
+
+  if (error) throw error;
+
+  console.log(results);
+
+  $('#resultDiv').text(result[0].uname);
+
+});
+
+ 
+
+connection.end();
+
+
+  </script>
+
+<form action="action_page.php" method="post">
+
+  <div class="imgcontainer">
+
+    <img src="img/login.png" alt="Avatar" class="avatar">
+
+  </div>
+
+
+  <div class="container">
+
+    <label for="uname"><b>Username</b></label>
+
+    <input type="text" placeholder="Enter Username" name="uname" required>
+
+
+    <label for="psw"><b>Password</b></label>
+
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+
+    <button type="submit">Login</button>
+
+
+<label>billing?</label><a href="billing.html">billing</a>
+
+  </div>
+
+
+</body>
+
+</form>
+
+
+</html>
