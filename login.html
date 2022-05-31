@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+
+  <div id="resultDiv"></div>
+
+  <script>
+
+var mysql      = require('mysql');
+
+var connection = mysql.createConnection({
+
+  host     : 'localhost',
+
+  user     : 'root',
+
+  password : null,
+
+  database : 'login'
+
+});
+
+ 
+
+connection.connect();
+
+
+$sql = "SELECT 'username','password' FROM  'user'";
+
+ 
+
+connection.query($sql, function (error, results, fields) {
+
+  if (error) throw error;
+
+  console.log(results);
+
+  $('#resultDiv').text(result[0].username);
+
+});
+
+ 
+
+connection.end();
+
+
+  </script>
+ 
+
+<form >
+
+  <div class="imgcontainer">
+
+    <img src="img/login2.png" alt="Avatar" class="avatar">
+
+  </div>
+
+
+  <div class="container">
+
+    <label for="username"><b>Username</b></label>
+
+    <input type="text" placeholder="Enter Username" id="username" required>
+
+
+    <label for="psw"><b>Password</b></label>
+
+    <input type="password" placeholder="Enter Password" id="password" required>
+
+
+    <button type="submit" value="connect to mysql" id="login">Login</button>
+
+
+
+  </div>
+
+
+</body>
+
+</form>
+
+
+</html>
